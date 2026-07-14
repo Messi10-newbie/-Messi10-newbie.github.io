@@ -1,0 +1,5 @@
+101|Standard Room|150|1
+102|Deluxe Room|250|1
+201|Suite|400|1
+103|honeyroom|220|1
+202|smallgamingroom|888|1

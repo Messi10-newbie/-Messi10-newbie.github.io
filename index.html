@@ -1,4 +1,3 @@
-Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +5,11 @@ Index · HTML
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deveswar A/L Mohan — Portfolio</title>
 <meta name="description" content="Deveswar A/L Mohan — Diploma in Information Technology student at TAR UMT, building full-stack and cloud systems, aspiring AI/ML engineer.">
- 
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
- 
+
 <style>
   :root{
     --ink: #0A0F1E;
@@ -24,14 +23,14 @@ Index · HTML
     --radius: 10px;
     --maxw: 760px;
   }
- 
+
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
   }
- 
+
   body{
     margin:0;
     background:var(--ink);
@@ -40,11 +39,11 @@ Index · HTML
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
- 
+
   a{color:inherit;}
   h1,h2,h3{font-family:'Space Grotesk', sans-serif; margin:0 0 .4em 0; letter-spacing:-0.01em;}
   ul{margin:0; padding:0;}
- 
+
   /* subtle fixed network-grid backdrop */
   .bg-grid{
     position:fixed; inset:0; z-index:0; pointer-events:none;
@@ -53,7 +52,7 @@ Index · HTML
     background-size: 34px 34px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
   }
- 
+
   /* eyebrow / labels */
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
@@ -63,7 +62,7 @@ Index · HTML
     margin:0 0 .6em 0;
   }
   .eyebrow::before{content:"// ";color:var(--muted);}
- 
+
   /* ===== rail nav (desktop only) ===== */
   .rail{
     position:fixed;
@@ -104,11 +103,11 @@ Index · HTML
   }
   .rail .node-label{ opacity:0; transform:translateX(-6px); transition: all .2s ease; white-space:nowrap; }
   .rail li:hover .node-label, .rail li.active .node-label{ opacity:1; transform:translateX(0); }
- 
+
   @media (min-width: 980px){
     .rail{ display:block; }
   }
- 
+
   /* mobile top progress bar */
   .progress-top{
     position:fixed; top:0; left:0; height:3px; width:0%;
@@ -116,15 +115,15 @@ Index · HTML
     z-index:30; transition:width .1s linear;
   }
   @media (min-width: 980px){ .progress-top{ display:none; } }
- 
+
   main{ position:relative; z-index:1; }
- 
+
   .section{
     max-width:var(--maxw); margin:0 auto; padding:110px 24px;
     border-bottom:1px solid var(--border);
   }
   .section:last-of-type{ border-bottom:none; }
- 
+
   /* ===== hero ===== */
   .hero{
     min-height:92vh; display:flex; flex-direction:column; justify-content:center;
@@ -155,18 +154,18 @@ Index · HTML
   .btn-primary:hover{ background:#7ff2e2; }
   .btn-ghost{ color:var(--text); }
   .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
- 
+
   .status-chips{ display:flex; gap:10px; flex-wrap:wrap; }
   .chip{
     font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--muted);
     border:1px solid var(--border); border-radius:100px; padding:5px 12px;
   }
   .chip::before{ content:"● "; color:var(--accent); }
- 
+
   /* ===== about ===== */
   .about-text{ color:var(--text); max-width:64ch; }
   .about-text .muted{ color:var(--muted); }
- 
+
   /* ===== skills ===== */
   .skill-groups{ display:grid; grid-template-columns:1fr 1fr; gap:28px 32px; margin-top:1.4em;}
   @media (max-width:600px){ .skill-groups{ grid-template-columns:1fr; } }
@@ -180,7 +179,7 @@ Index · HTML
     background:var(--panel); border:1px solid var(--border); color:var(--text);
     padding:5px 11px; border-radius:6px;
   }
- 
+
   /* ===== projects ===== */
   .project-grid{ display:flex; flex-direction:column; gap:18px; margin-top:1.4em; }
   .project-card{
@@ -206,7 +205,7 @@ Index · HTML
     text-decoration:none; border-bottom:1px solid transparent;
   }
   .code-link:hover{ border-bottom-color:var(--accent); }
- 
+
   /* ===== certifications ===== */
   .cert-list{ list-style:none; margin-top:1.2em; display:flex; flex-direction:column; }
   .cert-list li{
@@ -216,7 +215,7 @@ Index · HTML
   .cert-list li:last-child{ border-bottom:none; }
   .cert-name{ font-weight:500; }
   .cert-issuer{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--muted); }
- 
+
   /* ===== contact ===== */
   .contact p{ color:var(--muted); max-width:56ch; }
   .contact-grid{ display:flex; flex-direction:column; gap:12px; margin-top:1.4em; }
@@ -228,20 +227,20 @@ Index · HTML
   .contact-card:hover{ border-color:var(--accent); }
   .contact-label{ font-family:'IBM Plex Mono', monospace; font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
   .contact-value{ font-weight:500; }
- 
+
   footer{
     max-width:var(--maxw); margin:0 auto; padding:40px 24px 80px;
     color:var(--muted); font-size:.85rem; font-family:'IBM Plex Mono', monospace;
   }
- 
+
   :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
 </style>
 </head>
 <body>
- 
+
 <div class="bg-grid" aria-hidden="true"></div>
 <div class="progress-top" id="progressTop" aria-hidden="true"></div>
- 
+
 <nav class="rail" aria-label="Section navigation">
   <ol id="railList">
     <li data-target="home"><button aria-label="Go to Home"><span class="node-dot"></span><span class="node-label">home</span></button></li>
@@ -253,9 +252,9 @@ Index · HTML
   </ol>
   <div class="rail-line"><span class="pulse"></span></div>
 </nav>
- 
+
 <main>
- 
+
   <section id="home" class="section hero">
     <svg class="hero-net" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <g stroke="#5EEAD4" stroke-width="1">
@@ -290,13 +289,13 @@ Index · HTML
       <span class="chip">Johor, Malaysia</span>
     </div>
   </section>
- 
+
   <section id="about" class="section">
     <p class="eyebrow">about</p>
     <h2>About</h2>
     <p class="about-text">Diploma in Information Technology student at TAR UMT (Johor Branch), currently in Year 2. My coursework spans Java OOP, computer networks, operating systems, cloud computing, and web-based systems — and outside of class, I build real projects with them: desktop apps, web platforms, and cloud-deployed systems. <span class="muted">Long term, I'm working toward becoming an AI/ML engineer.</span></p>
   </section>
- 
+
   <section id="skills" class="section">
     <p class="eyebrow">skills</p>
     <h2>Skills</h2>
@@ -327,12 +326,12 @@ Index · HTML
       </div>
     </div>
   </section>
- 
+
   <section id="projects" class="section">
     <p class="eyebrow">projects</p>
     <h2>Projects</h2>
     <div class="project-grid">
- 
+
       <article class="project-card">
         <div class="project-head">
           <h3>CineBook</h3>
@@ -346,9 +345,9 @@ Index · HTML
         <div class="tag-row small">
           <span class="tag">C#</span><span class="tag">ASP.NET Core MVC</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
         </div>
-        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/cinebook" target="_blank" rel="noopener">View code &#8599;</a>
+        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/raw/main/cinebook.zip" target="_blank" rel="noopener">Download code &#8599;</a>
       </article>
- 
+
       <article class="project-card">
         <div class="project-head">
           <h3>Food Court Pre-Order System</h3>
@@ -364,7 +363,7 @@ Index · HTML
         </div>
         <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/food-court-preorder" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
- 
+
       <article class="project-card">
         <div class="project-head">
           <h3>Cinema Booking System</h3>
@@ -380,7 +379,7 @@ Index · HTML
         </div>
         <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/cinema-booking-java" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
- 
+
       <article class="project-card">
         <div class="project-head">
           <h3>Hotel Booking System</h3>
@@ -396,7 +395,7 @@ Index · HTML
         </div>
         <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/hotel-booking-cpp" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
- 
+
       <article class="project-card">
         <div class="project-head">
           <h3>Library Management System</h3>
@@ -412,7 +411,7 @@ Index · HTML
         </div>
         <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/library-management-system" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
- 
+
       <article class="project-card">
         <div class="project-head">
           <h3>AI Study Assistant</h3>
@@ -428,10 +427,26 @@ Index · HTML
         </div>
         <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/ai-study-assistant" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
- 
+
+      <article class="project-card">
+        <div class="project-head">
+          <h3>Recipe &amp; Nutrition Assistant</h3>
+          <span class="status status-done">completed</span>
+        </div>
+        <p class="project-sub">Desktop meal-planning app</p>
+        <ul>
+          <li>Tkinter desktop app with login authentication and three modules: recipe manager, ingredient substitutes, and shopping list</li>
+          <li>Tracks calories per recipe with weekly meal logging and JSON-based data persistence</li>
+        </ul>
+        <div class="tag-row small">
+          <span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">JSON</span>
+        </div>
+        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/recipe-nutrition-assistant" target="_blank" rel="noopener">View code ↗</a>
+      </article>
+
     </div>
   </section>
- 
+
   <section id="certs" class="section">
     <p class="eyebrow">certifications</p>
     <h2>Certifications</h2>
@@ -444,7 +459,7 @@ Index · HTML
       <li><span class="cert-name">Introduction to Cybersecurity</span><span class="cert-issuer">Cisco Networking Academy</span></li>
     </ul>
   </section>
- 
+
   <section id="contact" class="section contact">
     <p class="eyebrow">contact</p>
     <h2>Let's connect</h2>
@@ -460,23 +475,23 @@ Index · HTML
       </a>
     </div>
   </section>
- 
+
   <footer>
     <p>&copy; <span id="year"></span> Deveswar A/L Mohan. Built with HTML, CSS &amp; JavaScript.</p>
   </footer>
- 
+
 </main>
- 
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
- 
+
   const sections = document.querySelectorAll('.section');
   const railItems = document.querySelectorAll('#railList li');
   const railMap = {};
   railItems.forEach(li => { railMap[li.dataset.target] = li; li.querySelector('button').addEventListener('click', () => {
     document.getElementById(li.dataset.target).scrollIntoView({behavior:'smooth'});
   });});
- 
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const li = railMap[entry.target.id];
@@ -487,9 +502,9 @@ Index · HTML
       }
     });
   }, { rootMargin: '-45% 0px -45% 0px' });
- 
+
   sections.forEach(s => observer.observe(s));
- 
+
   const progressTop = document.getElementById('progressTop');
   window.addEventListener('scroll', () => {
     const h = document.documentElement;
@@ -497,7 +512,6 @@ Index · HTML
     progressTop.style.width = scrolled + '%';
   });
 </script>
- 
+
 </body>
 </html>
- 

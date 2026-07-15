@@ -1,0 +1,209 @@
+{
+    "Nasi Lemak": {
+        "category": "Breakfast",
+        "calories": 550,
+        "ingredients": [
+            {
+                "name": "rice",
+                "quantity": 200
+            },
+            {
+                "name": "coconut milk",
+                "quantity": 150
+            },
+            {
+                "name": "palm sugar",
+                "quantity": 10
+            },
+            {
+                "name": "lemongrass",
+                "quantity": 1
+            },
+            {
+                "name": "ginger",
+                "quantity": 5
+            },
+            {
+                "name": "garlic",
+                "quantity": 5
+            },
+            {
+                "name": "chili paste",
+                "quantity": 20
+            },
+            {
+                "name": "banana leaves",
+                "quantity": 1
+            }
+        ]
+    },
+    "Fried Rice": {
+        "category": "Lunch",
+        "calories": 480,
+        "ingredients": [
+            {
+                "name": "rice",
+                "quantity": 200
+            },
+            {
+                "name": "egg",
+                "quantity": 1
+            },
+            {
+                "name": "soy sauce",
+                "quantity": 15
+            },
+            {
+                "name": "garlic",
+                "quantity": 5
+            },
+            {
+                "name": "chili",
+                "quantity": 5
+            },
+            {
+                "name": "palm oil",
+                "quantity": 15
+            }
+        ]
+    },
+    "Vegetarian Stir Fry": {
+        "category": "Dinner",
+        "calories": 420,
+        "ingredients": [
+            {
+                "name": "tofu",
+                "quantity": 150
+            },
+            {
+                "name": "tempeh",
+                "quantity": 100
+            },
+            {
+                "name": "soy sauce",
+                "quantity": 15
+            },
+            {
+                "name": "ginger",
+                "quantity": 5
+            },
+            {
+                "name": "vegetable oil",
+                "quantity": 15
+            }
+        ]
+    },
+    "Laksa Soup": {
+        "category": "Dinner",
+        "calories": 650,
+        "ingredients": [
+            {
+                "name": "rice noodles",
+                "quantity": 200
+            },
+            {
+                "name": "coconut milk",
+                "quantity": 200
+            },
+            {
+                "name": "fish sauce",
+                "quantity": 15
+            },
+            {
+                "name": "chili paste",
+                "quantity": 20
+            },
+            {
+                "name": "lemongrass",
+                "quantity": 1
+            },
+            {
+                "name": "galangal",
+                "quantity": 5
+            },
+            {
+                "name": "tamarind",
+                "quantity": 10
+            }
+        ]
+    },
+    "Banana Leaf Grilled Fish": {
+        "category": "Dinner",
+        "calories": 500,
+        "ingredients": [
+            {
+                "name": "fish",
+                "quantity": 200
+            },
+            {
+                "name": "banana leaves",
+                "quantity": 1
+            },
+            {
+                "name": "turmeric",
+                "quantity": 5
+            },
+            {
+                "name": "chili",
+                "quantity": 5
+            },
+            {
+                "name": "garlic",
+                "quantity": 5
+            },
+            {
+                "name": "lime juice",
+                "quantity": 10
+            }
+        ]
+    },
+    "Tropical Fruit Salad": {
+        "category": "Dessert",
+        "calories": 300,
+        "ingredients": [
+            {
+                "name": "mango",
+                "quantity": 100
+            },
+            {
+                "name": "papaya",
+                "quantity": 100
+            },
+            {
+                "name": "banana",
+                "quantity": 100
+            },
+            {
+                "name": "lime juice",
+                "quantity": 10
+            },
+            {
+                "name": "palm sugar",
+                "quantity": 10
+            }
+        ]
+    },
+    "Mee Goreng": {
+        "category": "Lunch",
+        "calories": 800.0,
+        "ingredients": [
+            {
+                "name": "mee",
+                "quantity": 1.0
+            },
+            {
+                "name": "egg",
+                "quantity": 3.0
+            },
+            {
+                "name": "vage",
+                "quantity": 1.0
+            }
+        ]
+    },
+    "wqeqq": {
+        "category": "wqe",
+        "calories": 0,
+        "ingredients": []
+    }
+}

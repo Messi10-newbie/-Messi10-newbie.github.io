@@ -1,0 +1,98 @@
+{
+    "milk": {
+        "substitute": "almond milk",
+        "note": ""
+    },
+    "butter": {
+        "substitute": "ghee",
+        "note": "Clarified butter, often used in Malaysian cooking."
+    },
+    "flour": {
+        "substitute": "rice flour",
+        "note": "Commonly used in Malaysian desserts and gluten-free recipes."
+    },
+    "sugar": {
+        "substitute": "palm sugar",
+        "note": "Made from the sap of the palm tree, widely used in Malaysian desserts."
+    },
+    "egg": {
+        "substitute": "tofu",
+        "note": "Used as a vegan alternative in stir-fries and cakes."
+    },
+    "soy sauce": {
+        "substitute": "tamari",
+        "note": "A gluten-free alternative to traditional soy sauce."
+    },
+    "fish sauce": {
+        "substitute": "vegan fish sauce",
+        "note": "A plant-based alternative with similar umami flavor."
+    },
+    "chili": {
+        "substitute": "bird's eye chili",
+        "note": "A smaller, spicier variety of chili used in Malaysian dishes."
+    },
+    "garlic": {
+        "substitute": "shallots",
+        "note": "Used as a milder, sweeter alternative in many Asian cuisines."
+    },
+    "ginger": {
+        "substitute": "galangal",
+        "note": "A root similar to ginger but with a more intense, citrusy flavor."
+    },
+    "lemongrass": {
+        "substitute": "lime zest",
+        "note": "Provides a similar fresh citrus flavor."
+    },
+    "coriander": {
+        "substitute": "cilantro",
+        "note": "Coriander leaves, widely used in Malaysian and Southeast Asian dishes."
+    },
+    "turmeric": {
+        "substitute": "yellow curry powder",
+        "note": "Contains similar spices like turmeric, often used in curries."
+    },
+    "tamarind": {
+        "substitute": "lime juice",
+        "note": "Adds a sour and tangy flavor, often used in Malaysian soups."
+    },
+    "palm oil": {
+        "substitute": "vegetable oil",
+        "note": "A neutral oil often used in Malaysian frying and cooking."
+    },
+    "tofu": {
+        "substitute": "tempeh",
+        "note": "A fermented soybean product with a firmer texture."
+    },
+    "coconut oil": {
+        "substitute": "peanut oil",
+        "note": "Another commonly used oil in Southeast Asian cooking."
+    },
+    "chili paste": {
+        "substitute": "sambal oelek",
+        "note": "A spicy, tangy paste used in many Malaysian dishes."
+    },
+    "sweet soy sauce": {
+        "substitute": "kecap manis",
+        "note": "A thick, sweet soy sauce commonly used in Malaysia and Indonesia."
+    },
+    "star anise": {
+        "substitute": "cloves",
+        "note": "Provides a similar sweet-spicy flavor in Malaysian stews."
+    },
+    "mango": {
+        "substitute": "papaya",
+        "note": "Another tropical fruit with a sweet and slightly tangy flavor."
+    },
+    "banana leaves": {
+        "substitute": "parchment paper",
+        "note": "Used for wrapping food in cooking; banana leaves add a unique flavor."
+    },
+    "ads": {
+        "substitute": "adf",
+        "note": ""
+    },
+    "qew": {
+        "substitute": "weq",
+        "note": ""
+    }
+}

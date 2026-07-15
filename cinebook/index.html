@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SOFT.WORLD</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --rose:    #f4c2c2;
+      --lavender:#d8b4fe;
+      --peach:   #fcd5b4;
+      --sage:    #b7d7c4;
+      --cream:   #fdf6ec;
+      --mauve:   #c8a4c0;
+      --text:    #4a3f4a;
+      --muted:   #9c8a9a;
+      --white:   #fffbf7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── GRAIN ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ── FLOATING PETALS ── */
+    .petal {
+      position: fixed;
+      font-size: 1.2rem;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 998;
+      animation: petalFall linear infinite;
+    }
+
+    @keyframes petalFall {
+      0%   { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253,246,236,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(200,164,192,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--mauve);
+      text-transform: lowercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: lowercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--mauve); }
+
+    .nav-cta {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--rose);
+      color: var(--mauve);
+      text-decoration: none;
+      background: rgba(244,194,194,0.15);
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--rose);
+      color: #fff;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 4rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* soft gradient orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+    }
+
+    .orb-1 { width: 500px; height: 500px; background: var(--rose);    top: -100px; right: -100px; opacity: 0.35; animation: drift 10s ease-in-out infinite; }
+    .orb-2 { width: 400px; height: 400px; background: var(--lavender);bottom: -80px; left: -80px;  opacity: 0.25; animation: drift 14s ease-in-out infinite reverse; }
+    .orb-3 { width: 250px; height: 250px; background: var(--peach);   top: 40%;  left: 40%;       opacity: 0.2;  animation: drift 8s  ease-in-out infinite 4s; }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50%       { transform: translate(20px, -20px) scale(1.08); }
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: var(--mauve);
+      text-transform: lowercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeSlide 0.8s 0.2s ease forwards;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 30px; height: 1px;
+      background: var(--rose);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      opacity: 0;
+      animation: fadeSlide 0.8s 0.35s ease forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--mauve);
+    }
+
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 400px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeSlide 0.8s 0.5s ease forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeSlide 0.8s 0.65s ease forwards;
+    }
+
+    .btn-soft {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-filled {
+      background: linear-gradient(135deg, var(--rose), var(--mauve));
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(200,164,192,0.35);
+    }
+
+    .btn-filled:hover {
+      box-shadow: 0 12px 40px rgba(200,164,192,0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(200,164,192,0.4);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--mauve);
+      color: var(--mauve);
+      background: rgba(200,164,192,0.08);
+    }
+
+    /* hero right — polaroid stack */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeSlide 0.8s 0.5s ease forwards;
+    }
+
+    .polaroid-stack {
+      position: relative;
+      width: 280px;
+      height: 320px;
+    }
+
+    .polaroid {
+      position: absolute;
+      width: 220px;
+      background: #fff;
+      border-radius: 4px;
+      padding: 1rem 1rem 2.5rem;
+      box-shadow: 0 10px 50px rgba(150,100,140,0.15);
+      transition: transform 0.4s ease;
+    }
+
+    .polaroid:nth-child(1) { transform: rotate(-6deg) translate(-20px, 10px); }
+    .polaroid:nth-child(2) { transform: rotate(3deg)  translate(30px, -10px); z-index: 1; }
+    .polaroid:nth-child(3) { transform: rotate(-1deg) translate(5px, 20px);  z-index: 2; }
+
+    .polaroid-stack:hover .polaroid:nth-child(1) { transform: rotate(-10deg) translate(-40px, 20px); }
+    .polaroid-stack:hover .polaroid:nth-child(2) { transform: rotate(6deg)   translate(50px, -20px); }
+    .polaroid-stack:hover .polaroid:nth-child(3) { transform: rotate(-2deg)  translate(5px, 5px); }
+
+    .polaroid-img {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .p1 .polaroid-img { background: linear-gradient(135deg, #fcd5b4, #f4c2c2); }
+    .p2 .polaroid-img { background: linear-gradient(135deg, #d8b4fe, #f4c2c2); }
+    .p3 .polaroid-img { background: linear-gradient(135deg, #b7d7c4, #d8b4fe); }
+
+    .polaroid-label {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RIBBON ── */
+    .ribbon {
+      overflow: hidden;
+      background: linear-gradient(90deg, var(--rose), var(--lavender), var(--peach), var(--sage), var(--rose));
+      background-size: 400% 100%;
+      animation: gradShift 8s linear infinite;
+      padding: 0.9rem 0;
+    }
+
+    @keyframes gradShift {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 400% 50%; }
+    }
+
+    .ribbon-track {
+      display: flex;
+      gap: 2.5rem;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+    }
+
+    .ribbon-track span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: lowercase;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .ribbon-track span.dot { font-size: 0.5rem; opacity: 0.6; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 7rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: lowercase;
+      color: var(--mauve);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-eyebrow::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: var(--rose);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--mauve); }
+
+    /* ── AESTHETIC CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .acard {
+      background: var(--cream);
+      border: 1px solid rgba(200,164,192,0.12);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .acard::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(244,194,194,0.08), transparent 60%);
+      pointer-events: none;
+    }
+
+    .acard:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(200,164,192,0.2);
+    }
+
+    .acard-wide { grid-column: span 2; }
+
+    .acard-emoji {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .acard-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .acard-body {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .acard-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: lowercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(216,180,254,0.2);
+      color: var(--mauve);
+    }
+
+    .big-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 7vw, 5rem);
+      font-weight: 300;
+      background: linear-gradient(135deg, var(--rose), var(--mauve));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    /* ── MOOD GRID ── */
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .mood-pill {
+      aspect-ratio: 1;
+      border-radius: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mood-pill:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 20px 50px rgba(150,100,140,0.2);
+    }
+
+    .mood-pill-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: rgba(74,63,74,0.7);
+    }
+
+    .m1 { background: linear-gradient(135deg, #fde8e8, #f4c2c2); }
+    .m2 { background: linear-gradient(135deg, #ede8fd, #d8b4fe); }
+    .m3 { background: linear-gradient(135deg, #fdf3e8, #fcd5b4); }
+    .m4 { background: linear-gradient(135deg, #e8f5ee, #b7d7c4); }
+    .m5 { background: linear-gradient(135deg, #f8e8f4, #c8a4c0); }
+    .m6 { background: linear-gradient(135deg, #fdf6ec, #fde8e8); }
+
+    /* ── VIBE CHECK ── */
+    .quiz-wrap {
+      background: linear-gradient(135deg, rgba(244,194,194,0.12), rgba(216,180,254,0.12));
+      border: 1px solid rgba(200,164,192,0.2);
+      border-radius: 2rem;
+      padding: 4rem;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .quiz-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-q em { font-style: italic; color: var(--mauve); }
+
+    .quiz-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-opt {
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(200,164,192,0.3);
+      background: rgba(253,246,236,0.6);
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      backdrop-filter: blur(10px);
+    }
+
+    .quiz-opt:hover, .quiz-opt.chosen {
+      background: linear-gradient(135deg, rgba(244,194,194,0.4), rgba(216,180,254,0.4));
+      border-color: var(--mauve);
+      color: var(--text);
+      transform: scale(1.04);
+    }
+
+    .quiz-result {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--mauve);
+      min-height: 2rem;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .quiz-result.visible { opacity: 1; }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      padding: 6rem 3rem;
+      text-align: center;
+      background: linear-gradient(180deg, transparent, rgba(244,194,194,0.08), transparent);
+    }
+
+    .nl-inner { max-width: 500px; margin: 0 auto; }
+
+    .nl-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+    }
+
+    .nl-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .nl-form {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nl-input {
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(200,164,192,0.3);
+      background: rgba(253,246,236,0.8);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      min-width: 220px;
+      transition: border-color 0.3s;
+    }
+
+    .nl-input::placeholder { color: var(--muted); }
+    .nl-input:focus { border-color: var(--mauve); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(200,164,192,0.15);
+      padding: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--mauve);
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--mauve); }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor {
+      width: 8px; height: 8px;
+      background: var(--mauve);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s;
+    }
+
+    .cursor-trail {
+      width: 32px; height: 32px;
+      border: 1px solid rgba(200,164,192,0.4);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .hero-right { margin-top: 4rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .acard-wide { grid-column: span 1; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .section { padding: 5rem 1.5rem; }
+      .quiz-wrap { padding: 2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="trail"></div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">soft . world</div>
+    <ul class="nav-links">
+      <li><a href="#moods">moods</a></li>
+      <li><a href="#gallery">gallery</a></li>
+      <li><a href="#check">check</a></li>
+    </ul>
+    <a href="#check" class="nav-cta">start here</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="hero-left">
+      <div class="hero-tag">curated for your soft era</div>
+      <h1 class="hero-title">
+        find your<br>
+        <em>aesthetic</em><br>
+        moment
+      </h1>
+      <p class="hero-sub">a little corner of the internet that's soft, pretty, and completely yours. no comparison, just vibes.</p>
+      <div class="hero-actions">
+        <a href="#check" class="btn-soft btn-filled">find my aesthetic</a>
+        <a href="#moods" class="btn-soft btn-ghost">explore moods</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="polaroid-stack">
+        <div class="polaroid p1">
+          <div class="polaroid-img">&#127807;</div>
+          <div class="polaroid-label">cottagecore</div>
+        </div>
+        <div class="polaroid p2">
+          <div class="polaroid-img">&#127775;</div>
+          <div class="polaroid-label">dreamy</div>
+        </div>
+        <div class="polaroid p3">
+          <div class="polaroid-img">&#127774;</div>
+          <div class="polaroid-label">soft girl era</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ribbon -->
+  <div class="ribbon">
+    <div class="ribbon-track">
+      <span>soft girl</span><span class="dot">&#9679;</span>
+      <span>cottagecore</span><span class="dot">&#9679;</span>
+      <span>dreamy</span><span class="dot">&#9679;</span>
+      <span>ethereal</span><span class="dot">&#9679;</span>
+      <span>whimsy</span><span class="dot">&#9679;</span>
+      <span>vintage rose</span><span class="dot">&#9679;</span>
+      <span>lavender haze</span><span class="dot">&#9679;</span>
+      <span>peach summer</span><span class="dot">&#9679;</span>
+      <!-- duplicate -->
+      <span>soft girl</span><span class="dot">&#9679;</span>
+      <span>cottagecore</span><span class="dot">&#9679;</span>
+      <span>dreamy</span><span class="dot">&#9679;</span>
+      <span>ethereal</span><span class="dot">&#9679;</span>
+      <span>whimsy</span><span class="dot">&#9679;</span>
+      <span>vintage rose</span><span class="dot">&#9679;</span>
+      <span>lavender haze</span><span class="dot">&#9679;</span>
+      <span>peach summer</span><span class="dot">&#9679;</span>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <section class="section" id="moods">
+    <div class="section-eyebrow reveal">our universe</div>
+    <h2 class="section-title reveal">aesthetics that<br>live <em>rent free</em></h2>
+
+    <div class="cards-grid">
+      <div class="acard acard-wide reveal">
+        <span class="acard-emoji">&#127807;</span>
+        <div class="acard-title">Cottagecore</div>
+        <div class="acard-body">wildflower fields, homemade jam, linen dresses in the morning light. you romanticize the simplest things and honestly it's beautiful.</div>
+        <span class="acard-tag">&#9899; nature lover</span>
+      </div>
+
+      <div class="acard reveal">
+        <span class="acard-emoji">&#127775;</span>
+        <div class="acard-title">Ethereal</div>
+        <div class="acard-body">sheer fabrics, soft light, fairy-like energy that makes everyone stop and stare.</div>
+        <span class="acard-tag">&#9899; dreamer</span>
+      </div>
+
+      <div class="acard reveal">
+        <div class="big-num">soft.</div>
+        <div class="acard-title">Your era, unlocked</div>
+        <div class="acard-body">100k+ aesthetics found and counting.</div>
+      </div>
+
+      <div class="acard reveal">
+        <span class="acard-emoji">&#128144;</span>
+        <div class="acard-title">Vintage Rose</div>
+        <div class="acard-body">pressed flowers, old love letters, the warmth of analog everything.</div>
+        <span class="acard-tag">&#9899; romantic</span>
+      </div>
+
+      <div class="acard acard-wide reveal">
+        <span class="acard-emoji">&#127774;</span>
+        <div class="acard-title">Soft Girl Summer</div>
+        <div class="acard-body">blush pink, butterfly clips, cold matcha at golden hour. you're healing, glowing, and absolutely in your main character era. no notes.</div>
+        <span class="acard-tag">&#9899; that girl energy</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mood Gallery -->
+  <section class="section" id="gallery" style="padding-top:0">
+    <div class="section-eyebrow reveal">pick your mood</div>
+    <h2 class="section-title reveal">today's <em>palette</em></h2>
+
+    <div class="mood-grid">
+      <div class="mood-pill m1 reveal"><span>&#127799;</span><span class="mood-pill-label">rosy</span></div>
+      <div class="mood-pill m2 reveal"><span>&#10024;</span><span class="mood-pill-label">lavender</span></div>
+      <div class="mood-pill m3 reveal"><span>&#127819;</span><span class="mood-pill-label">peachy</span></div>
+      <div class="mood-pill m4 reveal"><span>&#127807;</span><span class="mood-pill-label">sage</span></div>
+      <div class="mood-pill m5 reveal"><span>&#128144;</span><span class="mood-pill-label">mauve</span></div>
+      <div class="mood-pill m6 reveal"><span>&#9728;&#65039;</span><span class="mood-pill-label">cream</span></div>
+    </div>
+  </section>
+
+  <!-- Vibe Check -->
+  <section class="section" id="check">
+    <div class="quiz-wrap reveal">
+      <div class="section-eyebrow" style="justify-content:center;margin-bottom:1.5rem">aesthetic finder</div>
+      <div class="quiz-q">what does your <em>ideal morning</em> look like?</div>
+      <div class="quiz-options">
+        <button class="quiz-opt" data-r="cottagecore coded &#127807; — baking bread at dawn, talking to your herbs. soft, intentional, and deeply in your element.">bread baking & garden walks</button>
+        <button class="quiz-opt" data-r="ethereal era &#127775; — journaling in golden light. you're a dreamer who turns every ordinary moment into poetry.">journaling by the window</button>
+        <button class="quiz-opt" data-r="soft girl summer &#127774; — matcha, skincare, manifestation. you're glowing and you know it.">iced matcha & skincare ritual</button>
+        <button class="quiz-opt" data-r="vintage romantic &#128144; — film cameras, pressed flowers, old music. you feel things deeply and beautifully.">film photos & vinyl records</button>
+        <button class="quiz-opt" data-r="dark academia adjacent &#128218; — morning pages and strong tea. you're building something meaningful, slowly.">reading with strong tea</button>
+      </div>
+      <div class="quiz-result" id="result"></div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="nl-inner">
+      <h2 class="nl-title reveal">stay in your <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--mauve)">soft era</em></h2>
+      <p class="nl-sub reveal">weekly aesthetic inspo, mood boards, and gentle reminders that you're doing great, bestie.</p>
+      <div class="nl-form reveal">
+        <input class="nl-input" type="email" placeholder="your@email.com" />
+        <button class="btn-soft btn-filled" onclick="this.textContent='&#10003; subscribed'">subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">soft . world</div>
+    <ul class="footer-links">
+      <li><a href="#">about</a></li>
+      <li><a href="#">moods</a></li>
+      <li><a href="#">contact</a></li>
+    </ul>
+    <div class="footer-copy">made with softness &copy; 2026</div>
+  </footer>
+
+  <script>
+    // Floating petals
+    const petalEmojis = ['&#127800;', '&#127801;', '&#127804;', '&#10024;', '&#127775;', '&#127799;'];
+    for (let i = 0; i < 12; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.innerHTML = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (8 + Math.random() * 12) + 's';
+      p.style.animationDelay    = (Math.random() * 15) + 's';
+      p.style.fontSize           = (0.8 + Math.random() * 0.8) + 'rem';
+      document.body.appendChild(p);
+    }
+
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const trail  = document.getElementById('trail');
+    let mx = 0, my = 0, tx = 0, ty = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx - 4  + 'px';
+      cursor.style.top  = my - 4  + 'px';
+    });
+
+    (function animTrail() {
+      tx += (mx - tx - 16) * 0.1;
+      ty += (my - ty - 16) * 0.1;
+      trail.style.left = tx + 'px';
+      trail.style.top  = ty + 'px';
+      requestAnimationFrame(animTrail);
+    })();
+
+    document.querySelectorAll('a, button, .mood-pill').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
+      el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+    });
+
+    // Quiz
+    document.querySelectorAll('.quiz-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('chosen'));
+        btn.classList.add('chosen');
+        const r = document.getElementById('result');
+        r.innerHTML = btn.dataset.r;
+        r.classList.add('visible');
+      });
+    });
+
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

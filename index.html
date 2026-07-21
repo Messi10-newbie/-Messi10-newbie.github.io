@@ -6,22 +6,23 @@
 <title>Deveswar A/L Mohan — Portfolio</title>
 <meta name="description" content="Deveswar A/L Mohan — Diploma in Information Technology student at TAR UMT, building full-stack and cloud systems, aspiring AI/ML engineer.">
 
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --ink: #0A0F1E;
-    --panel: #121A2E;
-    --panel-2: #16203A;
-    --border: #24304A;
-    --text: #E7ECF5;
-    --muted: #8B96AC;
-    --accent: #5EEAD4;
-    --accent-warm: #FBBF24;
+    --bg: #F6F7F9;
+    --panel: #FFFFFF;
+    --border: #E2E5EB;
+    --text: #1C2333;
+    --muted: #656F80;
+    --accent: #1F4E8C;
+    --accent-soft: #EAF1FB;
     --radius: 10px;
     --maxw: 760px;
+    --shadow: 0 1px 2px rgba(20,30,50,.04), 0 4px 16px rgba(20,30,50,.05);
   }
 
   *{box-sizing:border-box;}
@@ -33,35 +34,36 @@
 
   body{
     margin:0;
-    background:var(--ink);
+    background:var(--bg);
     color:var(--text);
-    font-family:'IBM Plex Sans', sans-serif;
-    line-height:1.6;
+    font-family:'Inter', sans-serif;
+    line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
 
   a{color:inherit;}
-  h1,h2,h3{font-family:'Space Grotesk', sans-serif; margin:0 0 .4em 0; letter-spacing:-0.01em;}
+  h1,h2,h3{font-family:'Inter', sans-serif; margin:0 0 .4em 0; letter-spacing:-0.01em; font-weight:700;}
   ul{margin:0; padding:0;}
 
-  /* subtle fixed network-grid backdrop */
+  /* subtle fixed backdrop */
   .bg-grid{
     position:fixed; inset:0; z-index:0; pointer-events:none;
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(94,234,212,0.10) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, rgba(31,78,140,0.06) 1px, transparent 0);
     background-size: 34px 34px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
   }
 
   /* eyebrow / labels */
   .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:'Inter', sans-serif;
     color:var(--accent);
-    font-size:.8rem;
-    letter-spacing:.04em;
+    font-weight:700;
+    font-size:.76rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
     margin:0 0 .6em 0;
   }
-  .eyebrow::before{content:"// ";color:var(--muted);}
 
   /* ===== rail nav (desktop only) ===== */
   .rail{
@@ -75,31 +77,19 @@
     position:absolute; left:5px; top:5px; bottom:5px; width:2px;
     background:var(--border); z-index:-1;
   }
-  .rail-line .pulse{
-    position:absolute; left:-3px; width:8px; height:8px; border-radius:50%;
-    background:var(--accent-warm); box-shadow:0 0 8px var(--accent-warm);
-    animation: travel 4s linear infinite;
-  }
-  @keyframes travel{
-    0%{ top:0%; opacity:0; }
-    5%{ opacity:1; }
-    95%{ opacity:1; }
-    100%{ top:100%; opacity:0; }
-  }
   .rail button{
     background:none; border:none; cursor:pointer; padding:0;
     display:flex; align-items:center; gap:10px; color:var(--muted);
-    font-family:'IBM Plex Mono', monospace; font-size:.78rem;
+    font-family:'Inter', sans-serif; font-size:.78rem; font-weight:500;
   }
   .rail .node-dot{
-    width:12px; height:12px; border-radius:50%;
-    background:var(--panel-2); border:2px solid var(--border);
+    width:11px; height:11px; border-radius:50%;
+    background:var(--panel); border:2px solid var(--border);
     transition: all .25s ease;
   }
   .rail li.active button{ color:var(--text); }
   .rail li.active .node-dot{
     background:var(--accent); border-color:var(--accent);
-    box-shadow:0 0 10px rgba(94,234,212,.6);
   }
   .rail .node-label{ opacity:0; transform:translateX(-6px); transition: all .2s ease; white-space:nowrap; }
   .rail li:hover .node-label, .rail li.active .node-label{ opacity:1; transform:translateX(0); }
@@ -111,7 +101,7 @@
   /* mobile top progress bar */
   .progress-top{
     position:fixed; top:0; left:0; height:3px; width:0%;
-    background:linear-gradient(90deg, var(--accent), var(--accent-warm));
+    background:var(--accent);
     z-index:30; transition:width .1s linear;
   }
   @media (min-width: 980px){ .progress-top{ display:none; } }
@@ -132,33 +122,34 @@
   }
   .hero-net{
     position:absolute; right:-10%; top:8%; width:70%; max-width:520px; height:auto;
-    opacity:.35; z-index:-1; pointer-events:none;
+    opacity:.5; z-index:-1; pointer-events:none;
   }
   .hero h1{
     font-size:clamp(2.4rem, 6vw, 3.6rem);
-    font-weight:700;
+    font-weight:800;
+    color:var(--text);
   }
   .hero .role{
-    font-size:1.05rem; color:var(--text); font-weight:500; margin:0 0 1em 0;
+    font-size:1.05rem; color:var(--accent); font-weight:600; margin:0 0 1em 0;
   }
   .hero .tagline{
     color:var(--muted); max-width:52ch; margin:0 0 2em 0;
   }
   .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:1.6em; }
   .btn{
-    font-family:'IBM Plex Mono', monospace; font-size:.85rem;
-    padding:10px 18px; border-radius:var(--radius); text-decoration:none;
+    font-family:'Inter', sans-serif; font-size:.9rem; font-weight:600;
+    padding:11px 20px; border-radius:var(--radius); text-decoration:none;
     border:1px solid var(--border); transition: all .2s ease;
   }
-  .btn-primary{ background:var(--accent); color:#06231E; border-color:var(--accent); font-weight:600; }
-  .btn-primary:hover{ background:#7ff2e2; }
-  .btn-ghost{ color:var(--text); }
+  .btn-primary{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  .btn-primary:hover{ background:#173D6E; }
+  .btn-ghost{ color:var(--text); background:var(--panel); }
   .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
 
   .status-chips{ display:flex; gap:10px; flex-wrap:wrap; }
   .chip{
-    font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--muted);
-    border:1px solid var(--border); border-radius:100px; padding:5px 12px;
+    font-family:'Inter', sans-serif; font-size:.78rem; font-weight:500; color:var(--muted);
+    border:1px solid var(--border); background:var(--panel); border-radius:100px; padding:6px 14px;
   }
   .chip::before{ content:"● "; color:var(--accent); }
 
@@ -170,41 +161,39 @@
   .skill-groups{ display:grid; grid-template-columns:1fr 1fr; gap:28px 32px; margin-top:1.4em;}
   @media (max-width:600px){ .skill-groups{ grid-template-columns:1fr; } }
   .skill-group h3{
-    font-family:'IBM Plex Mono', monospace; font-size:.8rem; color:var(--muted);
-    font-weight:500; text-transform:uppercase; letter-spacing:.05em; margin-bottom:.7em;
+    font-family:'Inter', sans-serif; font-size:.78rem; color:var(--muted);
+    font-weight:700; text-transform:uppercase; letter-spacing:.06em; margin-bottom:.7em;
   }
   .tag-row{ display:flex; flex-wrap:wrap; gap:8px; }
   .tag{
-    font-family:'IBM Plex Mono', monospace; font-size:.78rem;
-    background:var(--panel); border:1px solid var(--border); color:var(--text);
-    padding:5px 11px; border-radius:6px;
+    font-family:'Inter', sans-serif; font-size:.8rem; font-weight:500;
+    background:var(--accent-soft); border:1px solid var(--border); color:var(--accent);
+    padding:5px 12px; border-radius:6px;
   }
 
   /* ===== projects ===== */
-  .project-grid{ display:flex; flex-direction:column; gap:18px; margin-top:1.4em; }
+  .project-note{
+    color:var(--muted); font-size:.92rem; margin:.6em 0 1.6em 0;
+  }
+  .project-note a{ color:var(--accent); font-weight:600; text-decoration:none; border-bottom:1px solid var(--accent); }
+  .project-grid{ display:flex; flex-direction:column; gap:18px; }
   .project-card{
     background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
-    padding:24px 26px;
+    padding:24px 26px; box-shadow:var(--shadow);
   }
   .project-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-  .project-head h3{ font-size:1.15rem; }
+  .project-head h3{ font-size:1.15rem; color:var(--text); }
   .status{
-    font-family:'IBM Plex Mono', monospace; font-size:.68rem; letter-spacing:.03em;
+    font-family:'Inter', sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.03em;
     padding:4px 10px; border-radius:100px; white-space:nowrap; text-transform:uppercase;
   }
-  .status-deployed{ background:rgba(94,234,212,.12); color:var(--accent); border:1px solid rgba(94,234,212,.35); }
-  .status-progress{ background:rgba(251,191,36,.12); color:var(--accent-warm); border:1px solid rgba(251,191,36,.35); }
-  .status-done{ background:rgba(139,150,172,.14); color:var(--muted); border:1px solid var(--border); }
+  .status-deployed{ background:#E7F6EC; color:#1E7A38; border:1px solid #C6EBD1; }
+  .status-progress{ background:#FDF3DA; color:#9A6700; border:1px solid #F5E3AC; }
+  .status-done{ background:#EEF1F5; color:#525C6B; border:1px solid var(--border); }
   .project-sub{ color:var(--muted); font-size:.9rem; margin:.2em 0 .9em 0; }
   .project-card ul{ margin-bottom:14px; padding-left:1.2em; }
   .project-card li{ margin-bottom:6px; color:var(--text); }
   .tag-row.small .tag{ font-size:.72rem; padding:4px 9px; }
-  .code-link{
-    display:inline-flex; align-items:center; gap:6px; margin-top:14px;
-    font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--accent);
-    text-decoration:none; border-bottom:1px solid transparent;
-  }
-  .code-link:hover{ border-bottom-color:var(--accent); }
 
   /* ===== certifications ===== */
   .cert-list{ list-style:none; margin-top:1.2em; display:flex; flex-direction:column; }
@@ -213,8 +202,15 @@
     padding:14px 0; border-bottom:1px solid var(--border);
   }
   .cert-list li:last-child{ border-bottom:none; }
-  .cert-name{ font-weight:500; }
-  .cert-issuer{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--muted); }
+  .cert-name{ font-weight:600; color:var(--text); }
+  .cert-issuer{ font-family:'Inter', sans-serif; font-size:.82rem; color:var(--muted); }
+  .cert-list a.cert-link{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;
+    width:100%; text-decoration:none; color:var(--text);
+  }
+  .cert-list a.cert-link .cert-name{ transition: color .2s ease; }
+  .cert-list a.cert-link:hover .cert-name{ color:var(--accent); }
+  .cert-list a.cert-link:hover .cert-name::after{ content:" \2197"; color:var(--accent); }
 
   /* ===== contact ===== */
   .contact p{ color:var(--muted); max-width:56ch; }
@@ -222,20 +218,19 @@
   .contact-card{
     display:flex; justify-content:space-between; align-items:center;
     background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
-    padding:16px 20px; text-decoration:none; transition: border-color .2s ease;
+    padding:16px 20px; text-decoration:none; transition: border-color .2s ease; box-shadow:var(--shadow);
   }
   .contact-card:hover{ border-color:var(--accent); }
-  .contact-label{ font-family:'IBM Plex Mono', monospace; font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
-  .contact-value{ font-weight:500; }
+  .contact-label{ font-family:'Inter', sans-serif; font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; font-weight:600; }
+  .contact-value{ font-weight:600; color:var(--text); }
 
   footer{
     max-width:var(--maxw); margin:0 auto; padding:40px 24px 80px;
-    color:var(--muted); font-size:.85rem; font-family:'IBM Plex Mono', monospace;
+    color:var(--muted); font-size:.85rem; font-family:'Inter', sans-serif;
   }
 
   :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
-</style>
-</head>
+</style></head>
 <body>
 
 <div class="bg-grid" aria-hidden="true"></div>
@@ -250,14 +245,14 @@
     <li data-target="certs"><button aria-label="Go to Certifications"><span class="node-dot"></span><span class="node-label">certs</span></button></li>
     <li data-target="contact"><button aria-label="Go to Contact"><span class="node-dot"></span><span class="node-label">contact</span></button></li>
   </ol>
-  <div class="rail-line"><span class="pulse"></span></div>
+  <div class="rail-line"></div>
 </nav>
 
 <main>
 
   <section id="home" class="section hero">
     <svg class="hero-net" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g stroke="#5EEAD4" stroke-width="1">
+      <g stroke="#C7D3E3" stroke-width="1">
         <line x1="40" y1="60" x2="160" y2="120"/>
         <line x1="160" y1="120" x2="120" y2="240"/>
         <line x1="160" y1="120" x2="300" y2="90"/>
@@ -266,14 +261,14 @@
         <line x1="340" y1="220" x2="260" y2="310"/>
         <line x1="120" y1="240" x2="40" y2="330"/>
       </g>
-      <g fill="#5EEAD4">
-        <circle cx="40" cy="60" r="5"/>
-        <circle cx="160" cy="120" r="6"/>
-        <circle cx="300" cy="90" r="5"/>
-        <circle cx="120" cy="240" r="6"/>
-        <circle cx="340" cy="220" r="5"/>
-        <circle cx="260" cy="310" r="6"/>
-        <circle cx="40" cy="330" r="5"/>
+      <g fill="#1F4E8C">
+        <circle cx="40" cy="60" r="4"/>
+        <circle cx="160" cy="120" r="5"/>
+        <circle cx="300" cy="90" r="4"/>
+        <circle cx="120" cy="240" r="5"/>
+        <circle cx="340" cy="220" r="4"/>
+        <circle cx="260" cy="310" r="5"/>
+        <circle cx="40" cy="330" r="4"/>
       </g>
     </svg>
     <p class="eyebrow">whoami</p>
@@ -330,6 +325,7 @@
   <section id="projects" class="section">
     <p class="eyebrow">projects</p>
     <h2>Projects</h2>
+    <p class="project-note">To view the source code for any project below, visit my <a href="https://github.com/Messi10-newbie" target="_blank" rel="noopener">GitHub profile</a>.</p>
     <div class="project-grid">
 
       <article class="project-card">
@@ -345,7 +341,6 @@
         <div class="tag-row small">
           <span class="tag">C#</span><span class="tag">ASP.NET Core MVC</span><span class="tag">EF Core</span><span class="tag">SQL Server</span>
         </div>
-        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/cinebook" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
 
       <article class="project-card">
@@ -361,7 +356,6 @@
         <div class="tag-row small">
           <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">AWS EC2</span><span class="tag">RDS</span><span class="tag">VPC</span>
         </div>
-        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/raw/main/food-court-preorder.zip" target="_blank" rel="noopener">Download code &#8599;</a>
       </article>
 
       <article class="project-card">
@@ -377,7 +371,6 @@
         <div class="tag-row small">
           <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">JavaFX</span><span class="tag">Maven</span>
         </div>
-        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/cinema-booking-java" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
 
       <article class="project-card">
@@ -393,7 +386,6 @@
         <div class="tag-row small">
           <span class="tag">C++</span><span class="tag">File I/O</span><span class="tag">ANSI UI</span>
         </div>
-        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/hotel-booking-cpp" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
 
       <article class="project-card">
@@ -409,7 +401,6 @@
         <div class="tag-row small">
           <span class="tag">ERD</span><span class="tag">DFD</span><span class="tag">DBDL</span><span class="tag">Systems Analysis</span>
         </div>
-        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/library-management-system" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
 
       <article class="project-card">
@@ -425,7 +416,6 @@
         <div class="tag-row small">
           <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Gemini API</span>
         </div>
-        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/ai-study-assistant" target="_blank" rel="noopener">View code &#8599;</a>
       </article>
 
       <article class="project-card">
@@ -441,7 +431,6 @@
         <div class="tag-row small">
           <span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">JSON</span>
         </div>
-        <a class="code-link" href="https://github.com/Messi10-newbie/Messi10-newbie.github.io/tree/main/recipe-nutrition-assistant" target="_blank" rel="noopener">View code ↗</a>
       </article>
 
     </div>
@@ -451,12 +440,12 @@
     <p class="eyebrow">certifications</p>
     <h2>Certifications</h2>
     <ul class="cert-list">
-      <li><span class="cert-name">CCNA: Introduction to Networks</span><span class="cert-issuer">Cisco Networking Academy</span></li>
-      <li><span class="cert-name">AI Fundamentals: Foundations for Understanding AI</span><span class="cert-issuer">Cisco Networking Academy</span></li>
-      <li><span class="cert-name">Networking Basics</span><span class="cert-issuer">Cisco Networking Academy</span></li>
-      <li><span class="cert-name">Python Essentials 1</span><span class="cert-issuer">Cisco Networking Academy</span></li>
-      <li><span class="cert-name">Operating Systems Basics</span><span class="cert-issuer">Cisco Networking Academy</span></li>
-      <li><span class="cert-name">Introduction to Cybersecurity</span><span class="cert-issuer">Cisco Networking Academy</span></li>
+      <li><a class="cert-link" href="certificates/ccna-introduction-to-networks.pdf" target="_blank" rel="noopener"><span class="cert-name">CCNA: Introduction to Networks</span><span class="cert-issuer">Cisco Networking Academy</span></a></li>
+      <li><a class="cert-link" href="certificates/ai-fundamentals-foundations-for-understanding-ai.pdf" target="_blank" rel="noopener"><span class="cert-name">AI Fundamentals: Foundations for Understanding AI</span><span class="cert-issuer">Cisco Networking Academy</span></a></li>
+      <li><a class="cert-link" href="certificates/networking-basics.pdf" target="_blank" rel="noopener"><span class="cert-name">Networking Basics</span><span class="cert-issuer">Cisco Networking Academy</span></a></li>
+      <li><a class="cert-link" href="certificates/python-essentials-1.pdf" target="_blank" rel="noopener"><span class="cert-name">Python Essentials 1</span><span class="cert-issuer">Cisco Networking Academy</span></a></li>
+      <li><a class="cert-link" href="certificates/operating-systems-basics.pdf" target="_blank" rel="noopener"><span class="cert-name">Operating Systems Basics</span><span class="cert-issuer">Cisco Networking Academy</span></a></li>
+      <li><a class="cert-link" href="certificates/introduction-to-cybersecurity.pdf" target="_blank" rel="noopener"><span class="cert-name">Introduction to Cybersecurity</span><span class="cert-issuer">Cisco Networking Academy</span></a></li>
     </ul>
   </section>
 
